@@ -99,11 +99,8 @@ public class AutoLevel_Row implements PlugInFilter {
 		//Images are 8-bit (unsigned, i.e. values between 0 and 255).
 		//Java has no data type for unsigned 8-bit integers: the byte type is signed , so we have to use the & 0xff dance
 		//(a Boolean AND operation) to make sure that the value is treated as unsigned integer,
-		//do the sum as integers (the constant 255 is implicitly integer, unless defined otherwise, but here we specify an
-		//explict cast to make the intention clearer ) and then cast back to byte
-		//The & operator promotes to int so doesn't need an explicit cast.
-		//It feels very wasteful promoting to int rather than just bit shifting a byte, but a casual internet search
-		//suggests it is the Java solution.		
+		//do the comparisons as integers, and Math.round() is a doublemethod, and then cast back to byte
+		//The & operator promotes to int and then that int in a double subraction promotes to double, so doesn't need an explicit cast.
 
 		int rowMin = 255 ; //set as the max possible, update with each value lower
 		int rowMax =   0 ; //set as the min possible, update with each value larger
@@ -284,7 +281,7 @@ public class AutoLevel_Row implements PlugInFilter {
   
 /*=================================================================================*/
   
-}  //end public class Invert_Image
+}  //end public class AutoLevel_Row
 //========================================================================================
-//                         end public class Invert_Image
+//                         end public class AutoLevel_Row
 //========================================================================================
